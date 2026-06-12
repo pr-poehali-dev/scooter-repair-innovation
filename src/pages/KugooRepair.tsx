@@ -13,15 +13,70 @@ const MODELS = [
   { name: "Kugoo Max Speed", desc: "Скоростная модель, настройка контроллера и батареи" },
 ];
 
-const SERVICES = [
-  { icon: "Zap", title: "Замена батареи Kugoo", desc: "Оригинальные и совместимые аккумуляторы для всех моделей Kugoo", price: "от 2 800 ₽" },
-  { icon: "Settings", title: "Ремонт мотор-колеса", desc: "Перемотка, замена подшипников, магнитов, восстановление обмотки", price: "от 1 900 ₽" },
-  { icon: "Cpu", title: "Замена контроллера", desc: "Диагностика и замена ESC-контроллера на оригинальный или аналог", price: "от 2 200 ₽" },
-  { icon: "Monitor", title: "Ремонт дисплея", desc: "Замена экрана, восстановление подсветки и кнопок управления", price: "от 800 ₽" },
-  { icon: "Wrench", title: "Механический ремонт", desc: "Рама, вилка, дека, складной механизм, колёса и покрышки", price: "от 600 ₽" },
-  { icon: "Wifi", title: "Прошивка и разблокировка", desc: "Снятие ограничений скорости 25 км/ч, настройка под себя", price: "от 1 500 ₽" },
-  { icon: "AlertTriangle", title: "Ремонт после воды", desc: "Чистка, сушка, восстановление платы после попадания влаги", price: "от 1 200 ₽" },
-  { icon: "Shield", title: "Гарантийная диагностика", desc: "Полная проверка всех систем, письменный отчёт о состоянии", price: "бесплатно" },
+const SERVICE_GROUPS = [
+  {
+    group: "Аккумулятор",
+    icon: "Zap",
+    items: [
+      { title: "Диагностика батареи", price: "бесплатно", time: "30 мин" },
+      { title: "Восстановление ёмкости (балансировка)", price: "от 900 ₽", time: "1–2 часа" },
+      { title: "Замена отдельных ячеек", price: "от 1 500 ₽", time: "2–3 часа" },
+      { title: "Полная замена батареи", price: "от 2 800 ₽", time: "1–2 часа" },
+      { title: "Замена BMS-платы", price: "от 1 200 ₽", time: "1 час" },
+      { title: "Ремонт разъёма зарядки", price: "от 400 ₽", time: "30 мин" },
+    ],
+  },
+  {
+    group: "Электромотор",
+    icon: "Settings",
+    items: [
+      { title: "Диагностика мотор-колеса", price: "бесплатно", time: "30 мин" },
+      { title: "Замена подшипников мотора", price: "от 800 ₽", time: "1 час" },
+      { title: "Перемотка статора", price: "от 2 500 ₽", time: "3–5 часов" },
+      { title: "Замена датчиков Холла", price: "от 700 ₽", time: "1 час" },
+      { title: "Полная замена мотор-колеса", price: "от 1 900 ₽", time: "1–2 часа" },
+      { title: "Ремонт проводки мотора", price: "от 500 ₽", time: "1 час" },
+    ],
+  },
+  {
+    group: "Электроника",
+    icon: "Cpu",
+    items: [
+      { title: "Диагностика контроллера", price: "бесплатно", time: "30 мин" },
+      { title: "Перепрошивка контроллера", price: "от 1 500 ₽", time: "1 час" },
+      { title: "Замена ESC-контроллера", price: "от 2 200 ₽", time: "1–2 часа" },
+      { title: "Замена / ремонт дисплея", price: "от 800 ₽", time: "1 час" },
+      { title: "Ремонт кнопок и подсветки", price: "от 400 ₽", time: "30 мин" },
+      { title: "Замена тормозных ручек с датчиком", price: "от 600 ₽", time: "30 мин" },
+      { title: "Восстановление после воды", price: "от 1 200 ₽", time: "2–4 часа" },
+      { title: "Замена проводки (полная)", price: "от 1 800 ₽", time: "2–3 часа" },
+    ],
+  },
+  {
+    group: "Механика",
+    icon: "Wrench",
+    items: [
+      { title: "Регулировка тормозов", price: "от 300 ₽", time: "30 мин" },
+      { title: "Замена тормозных колодок", price: "от 400 ₽", time: "30 мин" },
+      { title: "Замена дискового тормоза", price: "от 700 ₽", time: "1 час" },
+      { title: "Замена камеры / покрышки", price: "от 500 ₽", time: "30 мин" },
+      { title: "Ремонт складного механизма", price: "от 600 ₽", time: "1 час" },
+      { title: "Замена рулевой трубки", price: "от 900 ₽", time: "1–2 часа" },
+      { title: "Ремонт / замена деки", price: "от 1 500 ₽", time: "2 часа" },
+      { title: "Замена подшипников колёс", price: "от 500 ₽", time: "1 час" },
+    ],
+  },
+  {
+    group: "Тюнинг",
+    icon: "Wifi",
+    items: [
+      { title: "Снятие ограничения скорости", price: "от 1 500 ₽", time: "1 час" },
+      { title: "Настройка режимов езды", price: "от 800 ₽", time: "30 мин" },
+      { title: "Установка LED-подсветки", price: "от 1 000 ₽", time: "1–2 часа" },
+      { title: "Установка сигнализации", price: "от 2 000 ₽", time: "2 часа" },
+      { title: "Апгрейд батареи (увеличение ёмкости)", price: "от 4 500 ₽", time: "3–5 часов" },
+    ],
+  },
 ];
 
 const PROBLEMS = [
@@ -193,19 +248,58 @@ export default function KugooRepair() {
             <h2 className="text-3xl md:text-4xl font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>
               Услуги по ремонту Kugoo
             </h2>
+            <p className="mt-3 text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>Диагностика всегда бесплатна</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {SERVICES.map((s, i) => (
-              <div key={i} className="glass-card p-5 rounded-xl group">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                  style={{ background: "rgba(0,255,178,0.1)", border: "1px solid rgba(0,255,178,0.15)" }}>
-                  <Icon name={s.icon} size={18} style={{ color: "var(--neon-green)" }} />
+          <div className="space-y-6">
+            {SERVICE_GROUPS.map((group, gi) => (
+              <div key={gi} className="glass-card rounded-2xl overflow-hidden">
+                {/* Group header */}
+                <div className="flex items-center gap-3 px-6 py-4"
+                  style={{ borderBottom: "1px solid rgba(0,255,178,0.1)", background: "rgba(0,255,178,0.04)" }}>
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center"
+                    style={{ background: "rgba(0,255,178,0.12)", border: "1px solid rgba(0,255,178,0.2)" }}>
+                    <Icon name={group.icon} size={17} style={{ color: "var(--neon-green)" }} />
+                  </div>
+                  <h3 className="font-black text-lg" style={{ fontFamily: "'Exo 2', sans-serif" }}>{group.group}</h3>
+                  <span className="ml-auto text-xs px-2 py-1 rounded-full"
+                    style={{ background: "rgba(0,255,178,0.1)", color: "var(--neon-green)" }}>
+                    {group.items.length} услуг
+                  </span>
                 </div>
-                <h3 className="font-bold mb-2 text-sm" style={{ fontFamily: "'Exo 2', sans-serif" }}>{s.title}</h3>
-                <p className="text-xs mb-4" style={{ color: "rgba(255,255,255,0.45)", lineHeight: "1.6" }}>{s.desc}</p>
-                <div className="font-bold neon-text text-sm">{s.price}</div>
+                {/* Items table */}
+                <div className="divide-y" style={{ borderColor: "rgba(255,255,255,0.05)" }}>
+                  {group.items.map((item, ii) => (
+                    <div key={ii} className="flex items-center justify-between px-6 py-3 transition-colors"
+                      style={{ borderColor: "rgba(255,255,255,0.05)" }}
+                      onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,255,178,0.03)")}
+                      onMouseLeave={e => (e.currentTarget.style.background = "transparent")}>
+                      <div className="flex items-center gap-3 flex-1">
+                        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "rgba(0,255,178,0.4)" }} />
+                        <span className="text-sm" style={{ color: "rgba(255,255,255,0.85)" }}>{item.title}</span>
+                      </div>
+                      <div className="flex items-center gap-6 flex-shrink-0 ml-4">
+                        <span className="text-xs hidden sm:block" style={{ color: "rgba(255,255,255,0.35)" }}>
+                          <Icon name="Clock" size={11} className="inline mr-1" />{item.time}
+                        </span>
+                        <span className="font-bold text-sm neon-text min-w-[90px] text-right">{item.price}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
+          </div>
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 items-center justify-between p-5 rounded-xl"
+            style={{ background: "rgba(0,255,178,0.05)", border: "1px solid rgba(0,255,178,0.15)" }}>
+            <div className="flex items-center gap-3">
+              <Icon name="Info" size={18} style={{ color: "var(--neon-green)" }} />
+              <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
+                Точная стоимость определяется после бесплатной диагностики
+              </p>
+            </div>
+            <a href="#kugoo-booking" className="neon-btn px-6 py-3 rounded-xl text-sm whitespace-nowrap">
+              Записаться на диагностику
+            </a>
           </div>
         </div>
       </section>
