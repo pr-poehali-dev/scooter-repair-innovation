@@ -7,6 +7,7 @@ const HERO_IMG = "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea9
 const MODEL_GROUPS = [
   {
     category: "Городские (S-серия)",
+    img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/c69a0eba-2213-4baf-924c-771385830f8b.jpg",
     models: [
       { name: "Kugoo S1", desc: "Базовая модель, 250 Вт, до 30 км/ч" },
       { name: "Kugoo S2", desc: "Улучшенные тормоза, складной руль" },
@@ -17,6 +18,7 @@ const MODEL_GROUPS = [
   },
   {
     category: "Внедорожные (M-серия)",
+    img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/10c9189c-efe4-4175-b4bf-5a1dd1502181.jpg",
     models: [
       { name: "Kugoo M2 Pro", desc: "Двойная подвеска, 10-дюймовые колёса" },
       { name: "Kugoo M4 Pro", desc: "500 Вт, внедорожная резина, большой запас хода" },
@@ -25,6 +27,7 @@ const MODEL_GROUPS = [
   },
   {
     category: "Двухмоторные",
+    img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/2accad3f-d493-465d-a6eb-85a40993fed3.jpg",
     models: [
       { name: "Kugoo G-Booster", desc: "2×1000 Вт, до 70 км/ч, двойной привод" },
       { name: "Kugoo G2 Pro", desc: "2×500 Вт, мощная батарея 48 В 20 А·ч" },
@@ -33,6 +36,7 @@ const MODEL_GROUPS = [
   },
   {
     category: "Складные (Kirin-серия)",
+    img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/7e5cabe5-aba3-4cef-82ae-bf5af437cc7c.jpg",
     models: [
       { name: "Kugoo Kirin B1", desc: "Бюджетный компактный самокат" },
       { name: "Kugoo Kirin B2", desc: "Со встроенным сиденьем, для города" },
@@ -42,6 +46,7 @@ const MODEL_GROUPS = [
   },
   {
     category: "Скоростные",
+    img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/72d2f346-0b81-480c-a4a6-bcac780a1238.jpg",
     models: [
       { name: "Kugoo Max Speed", desc: "800 Вт, до 45 км/ч, спортивный" },
       { name: "Kugoo RS", desc: "1200 Вт, гоночный, быстрый разгон" },
@@ -266,32 +271,46 @@ export default function KugooRepair() {
           <div className="space-y-5">
             {MODEL_GROUPS.map((group, gi) => (
               <div key={gi} className="glass-card rounded-2xl overflow-hidden">
-                <div className="flex items-center gap-3 px-6 py-4"
-                  style={{ borderBottom: "1px solid rgba(0,255,178,0.1)", background: "rgba(0,255,178,0.04)" }}>
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center"
-                    style={{ background: "rgba(0,255,178,0.12)", border: "1px solid rgba(0,255,178,0.2)" }}>
-                    <Icon name="Bike" size={15} style={{ color: "var(--neon-green)" }} />
+                <div className="flex flex-col md:flex-row">
+                  {/* Photo */}
+                  <div className="relative md:w-56 h-44 md:h-auto flex-shrink-0 overflow-hidden">
+                    <img src={group.img} alt={group.category}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                    <div className="absolute inset-0"
+                      style={{ background: "linear-gradient(to right, transparent 60%, rgba(10,13,20,0.6) 100%)" }} />
+                    <div className="absolute inset-0 md:hidden"
+                      style={{ background: "linear-gradient(to bottom, transparent 50%, rgba(10,13,20,0.8) 100%)" }} />
                   </div>
-                  <h3 className="font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>{group.category}</h3>
-                  <span className="ml-auto text-xs px-2 py-1 rounded-full"
-                    style={{ background: "rgba(0,255,178,0.1)", color: "var(--neon-green)" }}>
-                    {group.models.length} модели
-                  </span>
-                </div>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px"
-                  style={{ background: "rgba(255,255,255,0.04)" }}>
-                  {group.models.map((m, mi) => (
-                    <div key={mi} className="flex items-start gap-3 px-5 py-4 transition-colors"
-                      style={{ background: "var(--dark-bg)" }}
-                      onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,255,178,0.04)")}
-                      onMouseLeave={e => (e.currentTarget.style.background = "var(--dark-bg)")}>
-                      <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ background: "rgba(0,255,178,0.5)" }} />
-                      <div>
-                        <div className="font-bold text-sm mb-0.5" style={{ fontFamily: "'Exo 2', sans-serif" }}>{m.name}</div>
-                        <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>{m.desc}</div>
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-3 px-5 py-3"
+                      style={{ borderBottom: "1px solid rgba(0,255,178,0.1)", background: "rgba(0,255,178,0.04)" }}>
+                      <div className="w-7 h-7 rounded-lg flex items-center justify-center"
+                        style={{ background: "rgba(0,255,178,0.12)", border: "1px solid rgba(0,255,178,0.2)" }}>
+                        <Icon name="Bike" size={13} style={{ color: "var(--neon-green)" }} />
                       </div>
+                      <h3 className="font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>{group.category}</h3>
+                      <span className="ml-auto text-xs px-2 py-1 rounded-full"
+                        style={{ background: "rgba(0,255,178,0.1)", color: "var(--neon-green)" }}>
+                        {group.models.length} модели
+                      </span>
                     </div>
-                  ))}
+                    <div className="grid sm:grid-cols-2 gap-px"
+                      style={{ background: "rgba(255,255,255,0.04)" }}>
+                      {group.models.map((m, mi) => (
+                        <div key={mi} className="flex items-start gap-3 px-5 py-3 transition-colors"
+                          style={{ background: "var(--dark-bg)" }}
+                          onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,255,178,0.04)")}
+                          onMouseLeave={e => (e.currentTarget.style.background = "var(--dark-bg)")}>
+                          <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: "rgba(0,255,178,0.5)" }} />
+                          <div>
+                            <div className="font-bold text-sm mb-0.5" style={{ fontFamily: "'Exo 2', sans-serif" }}>{m.name}</div>
+                            <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>{m.desc}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
