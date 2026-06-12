@@ -22,12 +22,12 @@ const MASTERS = [
 const TIME_SLOTS = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
 
 const BLOG_POSTS = [
-  { tag: "Советы", title: "Как продлить жизнь аккумулятора электросамоката", date: "5 июня 2026", read: "4 мин", kugoo: false },
-  { tag: "Тюнинг", title: "Топ-5 улучшений для городского электросамоката", date: "28 мая 2026", read: "6 мин", kugoo: false },
-  { tag: "Обзор", title: "Xiaomi vs Segway: какой самокат чинить проще?", date: "15 мая 2026", read: "8 мин", kugoo: false },
-  { tag: "Kugoo", title: "Kugoo S3 Pro: самые частые поломки и как их починить", date: "10 июня 2026", read: "5 мин", kugoo: true },
-  { tag: "Kugoo", title: "Как заменить батарею на Kugoo S1 своими руками", date: "3 июня 2026", read: "7 мин", kugoo: true },
-  { tag: "Kugoo", title: "Прошивка Kugoo G-Booster: снимаем ограничение скорости", date: "25 мая 2026", read: "6 мин", kugoo: true },
+  { tag: "Советы", title: "Как продлить жизнь аккумулятора электросамоката", date: "5 июня 2026", read: "4 мин", kugoo: false, img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/a30e9d0e-7d2b-4380-ab38-b3a91fb44f7a.jpg" },
+  { tag: "Тюнинг", title: "Топ-5 улучшений для городского электросамоката", date: "28 мая 2026", read: "6 мин", kugoo: false, img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/b43a298c-3d2f-4522-8654-03ddb0f84920.jpg" },
+  { tag: "Обзор", title: "Xiaomi vs Segway: какой самокат чинить проще?", date: "15 мая 2026", read: "8 мин", kugoo: false, img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/3c93d03d-d388-42bc-85b3-527a54acf950.jpg" },
+  { tag: "Kugoo", title: "Kugoo S3 Pro: самые частые поломки и как их починить", date: "10 июня 2026", read: "5 мин", kugoo: true, img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/3946211b-92ed-4c7b-abba-15df2aaebfee.jpg" },
+  { tag: "Kugoo", title: "Как заменить батарею на Kugoo S1 своими руками", date: "3 июня 2026", read: "7 мин", kugoo: true, img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/371abee7-1b96-4410-86f1-d44b45c612da.jpg" },
+  { tag: "Kugoo", title: "Прошивка Kugoo G-Booster: снимаем ограничение скорости", date: "25 мая 2026", read: "6 мин", kugoo: true, img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/0cdbc335-7f88-49f9-8901-7f4a8d1ec694.jpg" },
 ];
 
 const GALLERY_ITEMS = [
@@ -480,14 +480,13 @@ export default function Index() {
             {BLOG_POSTS.filter(p => blogFilter === "Все" || p.tag === blogFilter).map((post, i) => (
               <div key={i} className="glass-card rounded-2xl overflow-hidden cursor-pointer group"
                 style={{ border: post.kugoo ? "1px solid rgba(0,255,178,0.25)" : undefined }}>
-                <div className="h-40 flex items-center justify-center relative"
-                  style={{ background: post.kugoo
-                    ? "linear-gradient(135deg, rgba(0,255,178,0.1) 0%, rgba(0,212,255,0.08) 100%)"
-                    : "linear-gradient(135deg, rgba(0,255,178,0.06) 0%, rgba(0,212,255,0.06) 100%)" }}>
-                  <Icon name={post.kugoo ? "Bike" : "FileText"} size={48} style={{ color: "rgba(0,255,178,0.25)" }} />
+                <div className="h-44 relative overflow-hidden">
+                  <img src={post.img} alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 50%, rgba(10,13,20,0.6) 100%)" }} />
                   {post.kugoo && (
                     <span className="absolute top-3 right-3 text-xs px-2 py-1 rounded-full font-bold"
-                      style={{ background: "rgba(0,255,178,0.15)", border: "1px solid rgba(0,255,178,0.4)", color: "var(--neon-green)" }}>
+                      style={{ background: "rgba(0,255,178,0.2)", border: "1px solid rgba(0,255,178,0.5)", color: "var(--neon-green)", backdropFilter: "blur(8px)" }}>
                       Kugoo
                     </span>
                   )}
