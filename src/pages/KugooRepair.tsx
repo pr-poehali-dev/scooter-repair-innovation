@@ -156,10 +156,10 @@ export default function KugooRepair() {
     <div className="min-h-screen" style={{ background: "var(--dark-bg)" }}>
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
-        style={{ background: "rgba(10,13,20,0.85)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(0,255,178,0.1)" }}>
+        style={{ background: "rgba(10,13,20,0.85)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(255,107,26,0.1)" }}>
         <Link to="/" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg flex items-center justify-center"
-            style={{ background: "linear-gradient(135deg, var(--neon-green), var(--neon-cyan))" }}>
+            style={{ background: "linear-gradient(135deg, #FF6B1A, #FF8C42)" }}>
             <Icon name="Zap" size={16} className="text-black" />
           </div>
           <span className="font-black text-xl tracking-tight" style={{ fontFamily: "'Exo 2', sans-serif", color: "white" }}>
@@ -185,7 +185,7 @@ export default function KugooRepair() {
           {NAV_ITEMS.map(item => (
             <Link key={item.label} to={item.href} onClick={() => setMenuOpen(false)}
               className="text-2xl font-bold py-3 border-b nav-link"
-              style={{ fontFamily: "'Exo 2', sans-serif", borderColor: "rgba(0,255,178,0.1)" }}>
+              style={{ fontFamily: "'Exo 2', sans-serif", borderColor: "rgba(255,107,26,0.1)" }}>
               {item.label}
             </Link>
           ))}
@@ -197,7 +197,7 @@ export default function KugooRepair() {
         <div className="flex items-center gap-2 text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
           <Link to="/" className="hover:text-white transition-colors">Главная</Link>
           <Icon name="ChevronRight" size={14} />
-          <span style={{ color: "var(--neon-green)" }}>Ремонт Kugoo</span>
+          <span style={{ color: "#FF6B1A" }}>Ремонт Kugoo</span>
         </div>
       </div>
 
@@ -206,8 +206,8 @@ export default function KugooRepair() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-6 text-xs font-semibold uppercase tracking-widest"
-              style={{ background: "rgba(0,255,178,0.1)", border: "1px solid rgba(0,255,178,0.3)", color: "var(--neon-green)" }}>
-              <span className="w-2 h-2 rounded-full animate-pulse-neon" style={{ background: "var(--neon-green)" }} />
+              style={{ background: "rgba(255,107,26,0.1)", border: "1px solid rgba(255,107,26,0.3)", color: "#FF6B1A" }}>
+              <span className="w-2 h-2 rounded-full animate-pulse-neon" style={{ background: "#FF6B1A" }} />
               Специализируемся на Kugoo
             </div>
             <h1 className="text-4xl md:text-6xl font-black leading-tight mb-6"
@@ -239,7 +239,7 @@ export default function KugooRepair() {
               ].map((b, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm"
                   style={{ color: "rgba(255,255,255,0.6)" }}>
-                  <Icon name={b.icon} size={15} style={{ color: "var(--neon-green)" }} />
+                  <Icon name={b.icon} size={15} style={{ color: "#FF6B1A" }} />
                   {b.text}
                 </div>
               ))}
@@ -247,9 +247,9 @@ export default function KugooRepair() {
           </div>
           <div className="relative hidden md:block">
             <div className="absolute inset-0 rounded-3xl"
-              style={{ background: "radial-gradient(circle at center, rgba(0,255,178,0.12) 0%, transparent 70%)" }} />
+              style={{ background: "radial-gradient(circle at center, rgba(255,107,26,0.12) 0%, transparent 70%)" }} />
             <img src={HERO_IMG} alt="Ремонт Kugoo" className="w-full rounded-3xl object-cover animate-float"
-              style={{ height: "460px", border: "1px solid rgba(0,255,178,0.2)", boxShadow: "0 0 60px rgba(0,255,178,0.12)" }} />
+              style={{ height: "460px", border: "1px solid rgba(255,107,26,0.2)", boxShadow: "0 0 60px rgba(255,107,26,0.12)" }} />
           </div>
         </div>
       </section>
@@ -260,7 +260,7 @@ export default function KugooRepair() {
       <section className="py-20 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--neon-green)" }}>Все модели</p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#FF6B1A" }}>Все модели</p>
             <h2 className="text-3xl md:text-4xl font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>
               Какие Kugoo мы ремонтируем
             </h2>
@@ -284,14 +284,14 @@ export default function KugooRepair() {
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 px-5 py-3"
-                      style={{ borderBottom: "1px solid rgba(0,255,178,0.1)", background: "rgba(0,255,178,0.04)" }}>
+                      style={{ borderBottom: "1px solid rgba(255,107,26,0.1)", background: "rgba(255,107,26,0.04)" }}>
                       <div className="w-7 h-7 rounded-lg flex items-center justify-center"
-                        style={{ background: "rgba(0,255,178,0.12)", border: "1px solid rgba(0,255,178,0.2)" }}>
-                        <Icon name="Bike" size={13} style={{ color: "var(--neon-green)" }} />
+                        style={{ background: "rgba(255,107,26,0.12)", border: "1px solid rgba(255,107,26,0.2)" }}>
+                        <Icon name="Bike" size={13} style={{ color: "#FF6B1A" }} />
                       </div>
                       <h3 className="font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>{group.category}</h3>
                       <span className="ml-auto text-xs px-2 py-1 rounded-full"
-                        style={{ background: "rgba(0,255,178,0.1)", color: "var(--neon-green)" }}>
+                        style={{ background: "rgba(255,107,26,0.1)", color: "#FF6B1A" }}>
                         {group.models.length} модели
                       </span>
                     </div>
@@ -300,9 +300,9 @@ export default function KugooRepair() {
                       {group.models.map((m, mi) => (
                         <div key={mi} className="flex items-start gap-3 px-5 py-3 transition-colors"
                           style={{ background: "var(--dark-bg)" }}
-                          onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,255,178,0.04)")}
+                          onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,107,26,0.04)")}
                           onMouseLeave={e => (e.currentTarget.style.background = "var(--dark-bg)")}>
-                          <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: "rgba(0,255,178,0.5)" }} />
+                          <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: "rgba(255,107,26,0.5)" }} />
                           <div>
                             <div className="font-bold text-sm mb-0.5" style={{ fontFamily: "'Exo 2', sans-serif" }}>{m.name}</div>
                             <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>{m.desc}</div>
@@ -316,7 +316,7 @@ export default function KugooRepair() {
             ))}
           </div>
           <div className="mt-5 text-center p-4 rounded-xl text-sm"
-            style={{ background: "rgba(0,255,178,0.05)", border: "1px solid rgba(0,255,178,0.12)", color: "rgba(255,255,255,0.5)" }}>
+            style={{ background: "rgba(255,107,26,0.05)", border: "1px solid rgba(255,107,26,0.12)", color: "rgba(255,255,255,0.5)" }}>
             Нет вашей модели в списке? Позвоните — скорее всего, мы её тоже ремонтируем
           </div>
         </div>
@@ -325,10 +325,10 @@ export default function KugooRepair() {
       <div className="section-divider" />
 
       {/* SERVICES */}
-      <section className="py-20 px-6 md:px-12" style={{ background: "rgba(0,255,178,0.02)" }}>
+      <section className="py-20 px-6 md:px-12" style={{ background: "rgba(255,107,26,0.02)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--neon-green)" }}>Прайс-лист</p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#FF6B1A" }}>Прайс-лист</p>
             <h2 className="text-3xl md:text-4xl font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>
               Услуги по ремонту Kugoo
             </h2>
@@ -339,14 +339,14 @@ export default function KugooRepair() {
               <div key={gi} className="glass-card rounded-2xl overflow-hidden">
                 {/* Group header */}
                 <div className="flex items-center gap-3 px-6 py-4"
-                  style={{ borderBottom: "1px solid rgba(0,255,178,0.1)", background: "rgba(0,255,178,0.04)" }}>
+                  style={{ borderBottom: "1px solid rgba(255,107,26,0.1)", background: "rgba(255,107,26,0.04)" }}>
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                    style={{ background: "rgba(0,255,178,0.12)", border: "1px solid rgba(0,255,178,0.2)" }}>
-                    <Icon name={group.icon} size={17} style={{ color: "var(--neon-green)" }} />
+                    style={{ background: "rgba(255,107,26,0.12)", border: "1px solid rgba(255,107,26,0.2)" }}>
+                    <Icon name={group.icon} size={17} style={{ color: "#FF6B1A" }} />
                   </div>
                   <h3 className="font-black text-lg" style={{ fontFamily: "'Exo 2', sans-serif" }}>{group.group}</h3>
                   <span className="ml-auto text-xs px-2 py-1 rounded-full"
-                    style={{ background: "rgba(0,255,178,0.1)", color: "var(--neon-green)" }}>
+                    style={{ background: "rgba(255,107,26,0.1)", color: "#FF6B1A" }}>
                     {group.items.length} услуг
                   </span>
                 </div>
@@ -355,10 +355,10 @@ export default function KugooRepair() {
                   {group.items.map((item, ii) => (
                     <div key={ii} className="flex items-center justify-between px-6 py-3 transition-colors"
                       style={{ borderColor: "rgba(255,255,255,0.05)" }}
-                      onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,255,178,0.03)")}
+                      onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,107,26,0.03)")}
                       onMouseLeave={e => (e.currentTarget.style.background = "transparent")}>
                       <div className="flex items-center gap-3 flex-1">
-                        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "rgba(0,255,178,0.4)" }} />
+                        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "rgba(255,107,26,0.4)" }} />
                         <span className="text-sm" style={{ color: "rgba(255,255,255,0.85)" }}>{item.title}</span>
                       </div>
                       <div className="flex items-center gap-6 flex-shrink-0 ml-4">
@@ -374,9 +374,9 @@ export default function KugooRepair() {
             ))}
           </div>
           <div className="mt-6 flex flex-col sm:flex-row gap-4 items-center justify-between p-5 rounded-xl"
-            style={{ background: "rgba(0,255,178,0.05)", border: "1px solid rgba(0,255,178,0.15)" }}>
+            style={{ background: "rgba(255,107,26,0.05)", border: "1px solid rgba(255,107,26,0.15)" }}>
             <div className="flex items-center gap-3">
-              <Icon name="Info" size={18} style={{ color: "var(--neon-green)" }} />
+              <Icon name="Info" size={18} style={{ color: "#FF6B1A" }} />
               <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
                 Точная стоимость определяется после бесплатной диагностики
               </p>
@@ -394,7 +394,7 @@ export default function KugooRepair() {
       <section className="py-20 px-6 md:px-12">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--neon-green)" }}>Частые проблемы</p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#FF6B1A" }}>Частые проблемы</p>
             <h2 className="text-3xl md:text-4xl font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>
               Что сломалось у вашего Kugoo?
             </h2>
@@ -406,8 +406,8 @@ export default function KugooRepair() {
                 <div className="flex items-center justify-between p-5">
                   <span className="font-semibold" style={{ fontFamily: "'Exo 2', sans-serif" }}>{p.q}</span>
                   <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ml-4 transition-transform duration-300"
-                    style={{ background: "rgba(0,255,178,0.1)", transform: openProblem === i ? "rotate(45deg)" : "rotate(0deg)" }}>
-                    <Icon name="Plus" size={14} style={{ color: "var(--neon-green)" }} />
+                    style={{ background: "rgba(255,107,26,0.1)", transform: openProblem === i ? "rotate(45deg)" : "rotate(0deg)" }}>
+                    <Icon name="Plus" size={14} style={{ color: "#FF6B1A" }} />
                   </div>
                 </div>
                 {openProblem === i && (
@@ -424,10 +424,10 @@ export default function KugooRepair() {
       <div className="section-divider" />
 
       {/* MASTERS */}
-      <section className="py-20 px-6 md:px-12" style={{ background: "rgba(0,255,178,0.02)" }}>
+      <section className="py-20 px-6 md:px-12" style={{ background: "rgba(255,107,26,0.02)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--neon-green)" }}>Команда</p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#FF6B1A" }}>Команда</p>
             <h2 className="text-3xl md:text-4xl font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>
               Мастера по Kugoo
             </h2>
@@ -454,7 +454,7 @@ export default function KugooRepair() {
       <section id="kugoo-booking" className="py-20 px-6 md:px-12">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--neon-green)" }}>Онлайн-запись</p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#FF6B1A" }}>Онлайн-запись</p>
             <h2 className="text-3xl md:text-4xl font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>
               Записаться на ремонт Kugoo
             </h2>
@@ -462,10 +462,10 @@ export default function KugooRepair() {
           </div>
 
           {sent ? (
-            <div className="glass-card p-10 rounded-2xl text-center" style={{ border: "1px solid rgba(0,255,178,0.3)" }}>
+            <div className="glass-card p-10 rounded-2xl text-center" style={{ border: "1px solid rgba(255,107,26,0.3)" }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
-                style={{ background: "rgba(0,255,178,0.15)", border: "2px solid var(--neon-green)" }}>
-                <Icon name="Check" size={30} style={{ color: "var(--neon-green)" }} />
+                style={{ background: "rgba(255,107,26,0.15)", border: "2px solid #FF6B1A" }}>
+                <Icon name="Check" size={30} style={{ color: "#FF6B1A" }} />
               </div>
               <h3 className="text-2xl font-black mb-2 neon-text" style={{ fontFamily: "'Exo 2', sans-serif" }}>Заявка принята!</h3>
               <p style={{ color: "rgba(255,255,255,0.6)" }}>Мы перезвоним вам в течение 15 минут</p>
@@ -503,11 +503,11 @@ export default function KugooRepair() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-10 px-6 md:px-12" style={{ borderTop: "1px solid rgba(0,255,178,0.1)" }}>
+      <footer className="py-10 px-6 md:px-12" style={{ borderTop: "1px solid rgba(255,107,26,0.1)" }}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-lg flex items-center justify-center"
-              style={{ background: "linear-gradient(135deg, var(--neon-green), var(--neon-cyan))" }}>
+              style={{ background: "linear-gradient(135deg, #FF6B1A, #FF8C42)" }}>
               <Icon name="Zap" size={14} className="text-black" />
             </div>
             <span className="font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>Volt<span className="neon-text">Fix</span></span>
