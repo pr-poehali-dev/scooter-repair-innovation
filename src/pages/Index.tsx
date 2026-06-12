@@ -27,12 +27,12 @@ const BLOG_POSTS = [
 ];
 
 const GALLERY_ITEMS = [
-  { label: "Замена батареи Xiaomi Pro 2", type: "before-after" },
-  { label: "Восстановление мотор-колеса", type: "repair" },
-  { label: "Кастом-тюнинг Ninebot Max", type: "tuning" },
-  { label: "Замена контроллера KingSong", type: "repair" },
-  { label: "Сборка новой проводки", type: "wiring" },
-  { label: "Ремонт рамы после ДТП", type: "frame" },
+  { label: "Замена батареи Xiaomi Pro 2", type: "before-after", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/fb0c7ceb-2251-4b95-9a6c-a7eb973fd31b.jpg" },
+  { label: "Восстановление мотор-колеса", type: "repair", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/1ec21660-3037-4e60-885c-933e260cf4b3.jpg" },
+  { label: "Кастом-тюнинг Ninebot Max", type: "tuning", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/05dad27e-6713-463e-ba69-5cac80e59500.jpg" },
+  { label: "Замена контроллера KingSong", type: "repair", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/b5de461a-cfa8-466e-a8db-25f6bf875266.jpg" },
+  { label: "Сборка новой проводки", type: "wiring", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/fb4ed1d7-dbe5-41a3-a54c-a4faef089fad.jpg" },
+  { label: "Ремонт рамы после ДТП", type: "frame", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/d669f2ab-0a72-4716-9854-cf1bf1d5623b.jpg" },
 ];
 
 const STATS = [
@@ -401,23 +401,26 @@ export default function Index() {
             {GALLERY_ITEMS.map((item, i) => (
               <div key={i} onClick={() => setActiveGallery(i === activeGallery ? null : i)}
                 className="relative rounded-2xl overflow-hidden cursor-pointer group"
-                style={{ height: i % 3 === 1 ? "280px" : "200px", border: `1px solid ${activeGallery === i ? "var(--neon-green)" : "rgba(0,255,178,0.1)"}`, background: "rgba(15,19,32,0.8)", transition: "all 0.3s" }}>
-                <div className="absolute inset-0 flex items-center justify-center"
-                  style={{ background: `linear-gradient(135deg, rgba(0,255,178,0.05) 0%, rgba(0,212,255,0.05) 100%)` }}>
-                  <Icon name="Wrench" size={40} style={{ color: "rgba(0,255,178,0.15)" }} />
-                </div>
+                style={{ height: i % 3 === 1 ? "280px" : "220px", border: `1px solid ${activeGallery === i ? "var(--neon-green)" : "rgba(0,255,178,0.1)"}`, transition: "all 0.3s" }}>
+                <img
+                  src={item.img}
+                  alt={item.label}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 flex items-end p-4"
-                  style={{ background: "linear-gradient(to top, rgba(10,13,20,0.9) 0%, transparent 60%)" }}>
+                  style={{ background: "linear-gradient(to top, rgba(10,13,20,0.92) 0%, rgba(10,13,20,0.2) 50%, transparent 100%)" }}>
                   <div>
                     <span className="text-xs px-2 py-1 rounded-full mb-2 inline-block"
-                      style={{ background: "rgba(0,255,178,0.1)", border: "1px solid rgba(0,255,178,0.2)", color: "var(--neon-green)" }}>
+                      style={{ background: "rgba(0,255,178,0.15)", border: "1px solid rgba(0,255,178,0.3)", color: "var(--neon-green)" }}>
                       {item.type}
                     </span>
                     <p className="text-sm font-semibold text-white">{item.label}</p>
                   </div>
                 </div>
-                <div className="absolute inset-0 transition-all duration-300"
-                  style={{ boxShadow: activeGallery === i ? "inset 0 0 30px rgba(0,255,178,0.1)" : "none" }} />
+                {activeGallery === i && (
+                  <div className="absolute inset-0 transition-all duration-300"
+                    style={{ boxShadow: "inset 0 0 30px rgba(0,255,178,0.15)", border: "2px solid var(--neon-green)" }} />
+                )}
               </div>
             ))}
           </div>
