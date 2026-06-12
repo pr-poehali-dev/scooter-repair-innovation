@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 
 const HERO_IMG = "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/82692188-8f94-499c-9faa-b6be531cf5a3.jpg";
@@ -198,6 +199,24 @@ export default function Index() {
               </div>
             ))}
           </div>
+
+          {/* Kugoo banner */}
+          <Link to="/remont-kugoo" className="mt-8 flex items-center justify-between p-5 rounded-2xl group cursor-pointer"
+            style={{ background: "linear-gradient(135deg, rgba(0,255,178,0.07) 0%, rgba(0,212,255,0.07) 100%)", border: "1px solid rgba(0,255,178,0.2)", transition: "all 0.3s" }}
+            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(0,255,178,0.5)")}
+            onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(0,255,178,0.2)")}>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
+                style={{ background: "rgba(0,255,178,0.1)" }}>🛴</div>
+              <div>
+                <div className="font-bold" style={{ fontFamily: "'Exo 2', sans-serif" }}>Ремонт электросамокатов Kugoo</div>
+                <div className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>S1, S3, M2 Pro, G-Booster и другие модели — подробнее</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-1 neon-text font-semibold text-sm">
+              Подробнее <Icon name="ArrowRight" size={16} />
+            </div>
+          </Link>
         </div>
       </section>
 
