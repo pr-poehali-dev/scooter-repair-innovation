@@ -22,9 +22,12 @@ const MASTERS = [
 const TIME_SLOTS = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
 
 const BLOG_POSTS = [
-  { tag: "Советы", title: "Как продлить жизнь аккумулятора электросамоката", date: "5 июня 2026", read: "4 мин" },
-  { tag: "Тюнинг", title: "Топ-5 улучшений для городского электросамоката", date: "28 мая 2026", read: "6 мин" },
-  { tag: "Обзор", title: "Xiaomi vs Segway: какой самокат чинить проще?", date: "15 мая 2026", read: "8 мин" },
+  { tag: "Советы", title: "Как продлить жизнь аккумулятора электросамоката", date: "5 июня 2026", read: "4 мин", kugoo: false },
+  { tag: "Тюнинг", title: "Топ-5 улучшений для городского электросамоката", date: "28 мая 2026", read: "6 мин", kugoo: false },
+  { tag: "Обзор", title: "Xiaomi vs Segway: какой самокат чинить проще?", date: "15 мая 2026", read: "8 мин", kugoo: false },
+  { tag: "Kugoo", title: "Kugoo S3 Pro: самые частые поломки и как их починить", date: "10 июня 2026", read: "5 мин", kugoo: true },
+  { tag: "Kugoo", title: "Как заменить батарею на Kugoo S1 своими руками", date: "3 июня 2026", read: "7 мин", kugoo: true },
+  { tag: "Kugoo", title: "Прошивка Kugoo G-Booster: снимаем ограничение скорости", date: "25 мая 2026", read: "6 мин", kugoo: true },
 ];
 
 const GALLERY_ITEMS = [
@@ -62,6 +65,7 @@ export default function Index() {
   const [activeGallery, setActiveGallery] = useState<number | null>(null);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [blogFilter, setBlogFilter] = useState("Все");
 
   const handleBook = () => {
     if (name && phone && selectedMaster !== null && selectedTime) {
@@ -451,21 +455,42 @@ export default function Index() {
       {/* BLOG */}
       <section id="blog" className="py-24 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-16">
+          <div className="flex items-end justify-between mb-8">
             <div>
               <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--neon-green)" }}>Полезное</p>
               <h2 className="text-4xl md:text-5xl font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>Блог</h2>
             </div>
-            <a href="#" className="hidden md:flex items-center gap-2 text-sm nav-link">
-              Все статьи <Icon name="ArrowRight" size={16} />
-            </a>
+          </div>
+          {/* Filter tabs */}
+          <div className="flex gap-2 mb-10 flex-wrap">
+            {["Все", "Kugoo", "Советы", "Тюнинг", "Обзор"].map(tab => (
+              <button key={tab}
+                onClick={() => setBlogFilter(tab)}
+                className="px-4 py-2 rounded-full text-sm font-semibold transition-all"
+                style={{
+                  background: blogFilter === tab ? "var(--neon-green)" : "rgba(255,255,255,0.05)",
+                  color: blogFilter === tab ? "#0A0D14" : "rgba(255,255,255,0.55)",
+                  border: `1px solid ${blogFilter === tab ? "var(--neon-green)" : "rgba(255,255,255,0.1)"}`,
+                }}>
+                {tab}
+              </button>
+            ))}
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {BLOG_POSTS.map((post, i) => (
-              <div key={i} className="glass-card rounded-2xl overflow-hidden cursor-pointer group">
-                <div className="h-40 flex items-center justify-center"
-                  style={{ background: `linear-gradient(135deg, rgba(0,255,178,0.06) 0%, rgba(0,212,255,0.06) 100%)` }}>
-                  <Icon name="FileText" size={48} style={{ color: "rgba(0,255,178,0.2)" }} />
+            {BLOG_POSTS.filter(p => blogFilter === "Все" || p.tag === blogFilter).map((post, i) => (
+              <div key={i} className="glass-card rounded-2xl overflow-hidden cursor-pointer group"
+                style={{ border: post.kugoo ? "1px solid rgba(0,255,178,0.25)" : undefined }}>
+                <div className="h-40 flex items-center justify-center relative"
+                  style={{ background: post.kugoo
+                    ? "linear-gradient(135deg, rgba(0,255,178,0.1) 0%, rgba(0,212,255,0.08) 100%)"
+                    : "linear-gradient(135deg, rgba(0,255,178,0.06) 0%, rgba(0,212,255,0.06) 100%)" }}>
+                  <Icon name={post.kugoo ? "Bike" : "FileText"} size={48} style={{ color: "rgba(0,255,178,0.25)" }} />
+                  {post.kugoo && (
+                    <span className="absolute top-3 right-3 text-xs px-2 py-1 rounded-full font-bold"
+                      style={{ background: "rgba(0,255,178,0.15)", border: "1px solid rgba(0,255,178,0.4)", color: "var(--neon-green)" }}>
+                      Kugoo
+                    </span>
+                  )}
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
