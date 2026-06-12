@@ -137,10 +137,10 @@ export default function Index() {
                 <Icon name="Calendar" size={18} />
                 Записаться онлайн
               </a>
-              <a href="#services" className="px-8 py-4 rounded-xl text-base inline-flex items-center gap-2 font-semibold"
+              <a href="tel:+74951234567" className="px-8 py-4 rounded-xl text-base inline-flex items-center gap-2 font-semibold"
                 style={{ border: "1px solid rgba(255,255,255,0.15)", color: "white", transition: "all 0.3s" }}>
-                <Icon name="ChevronRight" size={18} />
-                Наши услуги
+                <Icon name="Phone" size={18} />
+                Позвонить
               </a>
             </div>
             <div className="grid grid-cols-2 gap-4 mt-10">
