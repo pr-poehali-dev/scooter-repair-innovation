@@ -4,13 +4,50 @@ import Icon from "@/components/ui/icon";
 
 const HERO_IMG = "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/ba2ae751-05e7-4844-8976-ce50fbb4a153.jpg";
 
-const MODELS = [
-  { name: "Kugoo S1 / S2 / S3", desc: "Бюджетные городские модели, широкая база запчастей" },
-  { name: "Kugoo S3 Pro", desc: "Улучшенная версия с увеличенной батареей и мощностью" },
-  { name: "Kugoo M2 Pro", desc: "Внедорожный самокат с двойной подвеской" },
-  { name: "Kugoo G-Booster", desc: "Мощный двухмоторный самокат, ремонт любой сложности" },
-  { name: "Kugoo Kirin B2", desc: "Складной компактный самокат с встроенным сиденьем" },
-  { name: "Kugoo Max Speed", desc: "Скоростная модель, настройка контроллера и батареи" },
+const MODEL_GROUPS = [
+  {
+    category: "Городские (S-серия)",
+    models: [
+      { name: "Kugoo S1", desc: "Базовая модель, 250 Вт, до 30 км/ч" },
+      { name: "Kugoo S2", desc: "Улучшенные тормоза, складной руль" },
+      { name: "Kugoo S3", desc: "Самая популярная модель серии, надёжная" },
+      { name: "Kugoo S3 Pro", desc: "Увеличенная батарея 374 Вт·ч, 10 А·ч" },
+      { name: "Kugoo S4", desc: "Мощность 350 Вт, улучшенная подвеска" },
+    ],
+  },
+  {
+    category: "Внедорожные (M-серия)",
+    models: [
+      { name: "Kugoo M2 Pro", desc: "Двойная подвеска, 10-дюймовые колёса" },
+      { name: "Kugoo M4 Pro", desc: "500 Вт, внедорожная резина, большой запас хода" },
+      { name: "Kugoo Xima E1", desc: "Мощный мотор 800 Вт, гидравлика" },
+    ],
+  },
+  {
+    category: "Двухмоторные",
+    models: [
+      { name: "Kugoo G-Booster", desc: "2×1000 Вт, до 70 км/ч, двойной привод" },
+      { name: "Kugoo G2 Pro", desc: "2×500 Вт, мощная батарея 48 В 20 А·ч" },
+      { name: "Kugoo Kirin Master", desc: "Флагманская модель, до 80 км пробега" },
+    ],
+  },
+  {
+    category: "Складные (Kirin-серия)",
+    models: [
+      { name: "Kugoo Kirin B1", desc: "Бюджетный компактный самокат" },
+      { name: "Kugoo Kirin B2", desc: "Со встроенным сиденьем, для города" },
+      { name: "Kugoo Kirin M4 Pro", desc: "Мощность 500 Вт, пневмо-колёса" },
+      { name: "Kugoo Kirin T01", desc: "Трёхколёсная модель, устойчивость" },
+    ],
+  },
+  {
+    category: "Скоростные",
+    models: [
+      { name: "Kugoo Max Speed", desc: "800 Вт, до 45 км/ч, спортивный" },
+      { name: "Kugoo RS", desc: "1200 Вт, гоночный, быстрый разгон" },
+      { name: "Kugoo X1", desc: "Мощный фонарь, подвеска спереди" },
+    ],
+  },
 ];
 
 const SERVICE_GROUPS = [
@@ -222,18 +259,46 @@ export default function KugooRepair() {
             <h2 className="text-3xl md:text-4xl font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>
               Какие Kugoo мы ремонтируем
             </h2>
+            <p className="mt-3 text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
+              Работаем со всей линейкой Kugoo — от бюджетных до флагманских
+            </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {MODELS.map((m, i) => (
-              <div key={i} className="glass-card p-5 rounded-xl">
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-3"
-                  style={{ background: "rgba(0,255,178,0.1)" }}>
-                  <Icon name="Bike" size={16} style={{ color: "var(--neon-green)" }} />
+          <div className="space-y-5">
+            {MODEL_GROUPS.map((group, gi) => (
+              <div key={gi} className="glass-card rounded-2xl overflow-hidden">
+                <div className="flex items-center gap-3 px-6 py-4"
+                  style={{ borderBottom: "1px solid rgba(0,255,178,0.1)", background: "rgba(0,255,178,0.04)" }}>
+                  <div className="w-8 h-8 rounded-xl flex items-center justify-center"
+                    style={{ background: "rgba(0,255,178,0.12)", border: "1px solid rgba(0,255,178,0.2)" }}>
+                    <Icon name="Bike" size={15} style={{ color: "var(--neon-green)" }} />
+                  </div>
+                  <h3 className="font-black" style={{ fontFamily: "'Exo 2', sans-serif" }}>{group.category}</h3>
+                  <span className="ml-auto text-xs px-2 py-1 rounded-full"
+                    style={{ background: "rgba(0,255,178,0.1)", color: "var(--neon-green)" }}>
+                    {group.models.length} модели
+                  </span>
                 </div>
-                <div className="font-bold mb-1" style={{ fontFamily: "'Exo 2', sans-serif" }}>{m.name}</div>
-                <div className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>{m.desc}</div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px"
+                  style={{ background: "rgba(255,255,255,0.04)" }}>
+                  {group.models.map((m, mi) => (
+                    <div key={mi} className="flex items-start gap-3 px-5 py-4 transition-colors"
+                      style={{ background: "var(--dark-bg)" }}
+                      onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,255,178,0.04)")}
+                      onMouseLeave={e => (e.currentTarget.style.background = "var(--dark-bg)")}>
+                      <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ background: "rgba(0,255,178,0.5)" }} />
+                      <div>
+                        <div className="font-bold text-sm mb-0.5" style={{ fontFamily: "'Exo 2', sans-serif" }}>{m.name}</div>
+                        <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>{m.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
+          </div>
+          <div className="mt-5 text-center p-4 rounded-xl text-sm"
+            style={{ background: "rgba(0,255,178,0.05)", border: "1px solid rgba(0,255,178,0.12)", color: "rgba(255,255,255,0.5)" }}>
+            Нет вашей модели в списке? Позвоните — скорее всего, мы её тоже ремонтируем
           </div>
         </div>
       </section>
