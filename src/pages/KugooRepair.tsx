@@ -485,7 +485,7 @@ export default function KugooRepair() {
                   <label className="block text-sm mb-2" style={{ color: "rgba(255,255,255,0.5)" }}>Модель самоката</label>
                   <select className="dark-select" value={model} onChange={e => setModel(e.target.value)}>
                     <option value="">Выберите модель</option>
-                    {MODELS.map(m => <option key={m.name} value={m.name}>{m.name}</option>)}
+                    {MODEL_GROUPS.flatMap(g => g.models).map(m => <option key={m.name} value={m.name}>{m.name}</option>)}
                     <option value="Другая модель">Другая модель</option>
                   </select>
                 </div>
