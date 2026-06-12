@@ -5,12 +5,12 @@ import Icon from "@/components/ui/icon";
 const HERO_IMG = "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/82692188-8f94-499c-9faa-b6be531cf5a3.jpg";
 
 const SERVICES = [
-  { icon: "Zap", title: "Замена батареи", desc: "Восстановим ёмкость или заменим аккумулятор на новый", price: "от 2 500 ₽", time: "1–2 часа" },
-  { icon: "Settings", title: "Ремонт мотора", desc: "Диагностика и ремонт мотор-колеса, контроллера", price: "от 1 800 ₽", time: "2–4 часа" },
-  { icon: "Shield", title: "Техобслуживание", desc: "Полная диагностика, смазка, регулировка тормозов", price: "от 900 ₽", time: "1 час" },
-  { icon: "Cpu", title: "Ремонт электроники", desc: "Замена контроллера, дисплея, проводки", price: "от 1 200 ₽", time: "1–3 часа" },
-  { icon: "Wrench", title: "Механический ремонт", desc: "Рама, вилка, руль, колёса, подшипники", price: "от 600 ₽", time: "1–2 часа" },
-  { icon: "Wifi", title: "Прошивка и тюнинг", desc: "Снятие ограничений скорости, настройка под себя", price: "от 1 500 ₽", time: "1 час" },
+  { icon: "Zap", title: "Замена батареи", desc: "Восстановим ёмкость или заменим аккумулятор на новый", price: "от 2 500 ₽", time: "1–2 часа", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/d6c57760-8939-47d2-98c7-1fa9a420d927.jpg" },
+  { icon: "Settings", title: "Ремонт мотора", desc: "Диагностика и ремонт мотор-колеса, контроллера", price: "от 1 800 ₽", time: "2–4 часа", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/cd4beee7-56bd-4fc0-a260-abc448111854.jpg" },
+  { icon: "Shield", title: "Техобслуживание", desc: "Полная диагностика, смазка, регулировка тормозов", price: "от 900 ₽", time: "1 час", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/2c29eea3-cf7a-4eac-a697-8d6006157f79.jpg" },
+  { icon: "Cpu", title: "Ремонт электроники", desc: "Замена контроллера, дисплея, проводки", price: "от 1 200 ₽", time: "1–3 часа", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/99c22494-ec47-4cd3-afbf-50588128c9e8.jpg" },
+  { icon: "Wrench", title: "Механический ремонт", desc: "Рама, вилка, руль, колёса, подшипники", price: "от 600 ₽", time: "1–2 часа", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/2ef1d92b-0023-4532-8690-15a8fccf0494.jpg" },
+  { icon: "Wifi", title: "Прошивка и тюнинг", desc: "Снятие ограничений скорости, настройка под себя", price: "от 1 500 ₽", time: "1 час", img: "https://cdn.poehali.dev/projects/9321f5ab-0b14-4f20-8ca3-62ea93d79d82/files/03c2c38e-bb48-4f17-b4d6-addc681dc4e2.jpg" },
 ];
 
 const MASTERS = [
@@ -186,18 +186,25 @@ export default function Index() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map((s, i) => (
-              <div key={i} className="glass-card p-6 rounded-2xl cursor-pointer group">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                  style={{ background: "rgba(0,255,178,0.1)", border: "1px solid rgba(0,255,178,0.2)" }}>
-                  <Icon name={s.icon} size={22} style={{ color: "var(--neon-green)" }} />
+              <div key={i} className="glass-card rounded-2xl overflow-hidden cursor-pointer group">
+                <div className="h-44 relative overflow-hidden">
+                  <img src={s.img} alt={s.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(10,13,20,0.7) 100%)" }} />
+                  <div className="absolute bottom-3 left-3 w-9 h-9 rounded-xl flex items-center justify-center"
+                    style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)", border: "1px solid rgba(0,255,178,0.3)" }}>
+                    <Icon name={s.icon} size={17} style={{ color: "var(--neon-green)" }} />
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold mb-2" style={{ fontFamily: "'Exo 2', sans-serif" }}>{s.title}</h3>
-                <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.55)" }}>{s.desc}</p>
-                <div className="flex items-center justify-between pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                  <span className="font-bold neon-text">{s.price}</span>
-                  <div className="flex items-center gap-1 text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
-                    <Icon name="Clock" size={13} />
-                    {s.time}
+                <div className="p-5">
+                  <h3 className="text-lg font-bold mb-2" style={{ fontFamily: "'Exo 2', sans-serif" }}>{s.title}</h3>
+                  <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.55)" }}>{s.desc}</p>
+                  <div className="flex items-center justify-between pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                    <span className="font-bold neon-text">{s.price}</span>
+                    <div className="flex items-center gap-1 text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
+                      <Icon name="Clock" size={13} />
+                      {s.time}
+                    </div>
                   </div>
                 </div>
               </div>
